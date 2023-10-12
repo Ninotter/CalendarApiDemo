@@ -28,21 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            monthCalendar1 = new MonthCalendar();
             labelYear = new Label();
             labelMonth = new Label();
             numericUpDownYear = new NumericUpDown();
             numericUpDownMonth = new NumericUpDown();
             buttonGenerate = new Button();
+            panelCalendar = new Panel();
             ((System.ComponentModel.ISupportInitialize)numericUpDownYear).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownMonth).BeginInit();
             SuspendLayout();
-            // 
-            // monthCalendar1
-            // 
-            monthCalendar1.Location = new Point(28, 113);
-            monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 1;
             // 
             // labelYear
             // 
@@ -90,17 +84,24 @@
             buttonGenerate.UseVisualStyleBackColor = true;
             buttonGenerate.Click += buttonGenerate_Click;
             // 
+            // panelCalendar
+            // 
+            panelCalendar.Location = new Point(28, 117);
+            panelCalendar.Name = "panelCalendar";
+            panelCalendar.Size = new Size(227, 164);
+            panelCalendar.TabIndex = 7;
+            // 
             // FormTestCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(292, 293);
+            Controls.Add(panelCalendar);
             Controls.Add(buttonGenerate);
             Controls.Add(numericUpDownMonth);
             Controls.Add(numericUpDownYear);
             Controls.Add(labelMonth);
             Controls.Add(labelYear);
-            Controls.Add(monthCalendar1);
             MaximumSize = new Size(308, 332);
             MinimumSize = new Size(308, 332);
             Name = "FormTestCalendar";
@@ -112,11 +113,11 @@
         }
 
         #endregion
-        private MonthCalendar monthCalendar1;
         private Label labelYear;
         private Label labelMonth;
         private NumericUpDown numericUpDownYear;
         private NumericUpDown numericUpDownMonth;
         private Button buttonGenerate;
+        private Panel panelCalendar;
     }
 }
