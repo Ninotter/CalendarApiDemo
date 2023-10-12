@@ -9,6 +9,7 @@ namespace FormsDemo
         public FormTestCalendar()
         {
             InitializeComponent();
+            SetWeekDays();
         }
 
         private void buttonGenerate_Click(object sender, EventArgs e)
@@ -38,6 +39,22 @@ namespace FormsDemo
         //    }
         //}
 
+        private void SetWeekDays()
+        {
+            string[] weekdays = { "lu", "ma", "me", "je", "ve", "sa", "di" };
+            var labelHeight = panelCalendar.Height / 7;    // a maximum of 6 different weeks can be shown in a month + 1 to accomodate for weekdays labels
+            var labelWidth = panelCalendar.Width / 7;
+            for (int i = 0; i < 7; i++)
+            {
+                Label lbl = new Label();
+                lbl.Text = weekdays[i];
+                lbl.Parent = panelCalendar;
+                lbl.Location = new Point(labelWidth * i, 0);
+                lbl.Size = new Size(labelWidth, labelHeight);
+                lbl.Show();
+            }
+        }
+
         private void SetDates(IEnumerable<DateTime> dates)
         {
             ClearCalendar();
@@ -64,7 +81,7 @@ namespace FormsDemo
         private void GenerateButtonList(IEnumerable<DateTime> dates)
         {
             CalendarDays.Clear();
-            var dateButtonHeight = panelCalendar.Height / 6;    // a maximum of 6 different weeks can be shown in a month
+            var dateButtonHeight = panelCalendar.Height / 7;    // a maximum of 6 different weeks can be shown in a month + 1 to accomodate for weekdays labels
             var dateButtonWidth = panelCalendar.Width / 7;      // used to fit 7 days (of the week) in a row
             if (dates.Any())
             {
@@ -78,7 +95,7 @@ namespace FormsDemo
                     buttonDate.Location = new Point
                         (
                         dateButtonWidth * currentDayOfTheWeek,
-                        dateButtonHeight * currentWeekOfTheMonth
+                        dateButtonHeight * (currentWeekOfTheMonth + 1) //+1 for weekdays label
                         ) ;
                     buttonDate.Size = new Size(dateButtonWidth, dateButtonHeight);
                     buttonDate.Text = date.Day.ToString();
